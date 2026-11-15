@@ -26,8 +26,8 @@
 ## Sobre el proyecto
 
 Este repositorio contiene la landing page de Vidal Technologies, una página única pensada
-para campañas y para el primer contacto con nuevos clientes. Presenta los servicios,
-muestra cómo trabaja la empresa y lleva al visitante a escribir por WhatsApp o por e-mail.
+para campañas y para el primer contacto con nuevos clientes. Presenta los problemas que
+resuelve y los servicios, y lleva al visitante directo a WhatsApp o al e-mail.
 
 La página está hecha con HTML, CSS y JavaScript puros, en un único archivo, sin librerías
 y sin etapa de build. El código es abierto y forma parte del portafolio de la empresa.
@@ -35,7 +35,7 @@ y sin etapa de build. El código es abierto y forma parte del portafolio de la e
 ### Objetivos
 
 - Presentar la empresa de forma visual y directa, en módulos.
-- Mostrar los servicios y un ejemplo de panel que la empresa desarrolla.
+- Mostrar los problemas que la tecnología resuelve y los servicios, sin exceso de texto.
 - Atender clientes en Brasil y en el exterior, con el contenido en tres idiomas.
 - Llevar al visitante al contacto con un clic.
 
@@ -43,14 +43,17 @@ y sin etapa de build. El código es abierto y forma parte del portafolio de la e
 
 - **Tres idiomas:** portugués, inglés y español, con cambio por banderas en la esquina
   superior derecha. La elección queda guardada y también puede venir en la dirección (`?lang=en` o `?lang=es`).
-- **Inicio:** título con destacados en dorado, fondo de partículas animado, cifras y un
-  mini flujo de automatización.
-- **Servicios:** tarjetas numeradas del 01 al 04 (Sitios web, Aplicaciones web, Automatización
-  de procesos y Agentes de IA), que se abren al hacer clic y cambian solas.
-- **Nosotros:** cómo trabajamos (Conversación, Propuesta y Entrega), un proyecto destacado y la tarjeta "Conoce a Vidal".
-- **Panel:** ejemplo ilustrativo de dashboard, con gráficos animados y relojes en vivo de
-  São Paulo, Nueva York y Madrid.
-- **Contacto:** botón de WhatsApp, con mensaje listo en el idioma elegido, y botón de e-mail.
+- **Inicio:** título con una palabra que gira sola ("Tecnología que *atiende* / *vende* /
+  *organiza* por ti"), fondo de partículas animado y el botón de WhatsApp.
+- **Conversación animada:** un celular muestra a un agente de IA atendiendo a un cliente por
+  WhatsApp, mensaje por mensaje.
+- **Franja de palabras:** los servicios pasando en bucle.
+- **Problemas y soluciones:** tres dolores comunes que se tachan al desplazarse, con la
+  solución apareciendo después.
+- **Servicios:** Sitios web, Aplicaciones web, Automatización y Agentes de IA en tarjetas
+  cortas, con un brillo dorado que sigue al mouse.
+- **Llamada final y WhatsApp fijo:** bloque dorado con el contacto y un botón de WhatsApp
+  siempre visible en la esquina, con mensaje listo en el idioma elegido.
 - **Responsivo:** diseño pensado para computadora y celular.
 - **Identidad visual propia:** fondo negro, tonos grafito y dorado `#FBC105`, fuente
   Schibsted Grotesk y logo dibujado en SVG.
@@ -59,13 +62,13 @@ y sin etapa de build. El código es abierto y forma parte del portafolio de la e
 
 ### Computadora
 
-| Servicios | Nosotros |
+| Problemas y soluciones | Servicios |
 | --- | --- |
-| ![Servicios](docs/screenshots/servicos.png) | ![Nosotros](docs/screenshots/sobre.png) |
+| ![Problemas y soluciones](docs/screenshots/problemas.png) | ![Servicios](docs/screenshots/servicos.png) |
 
-| Panel | Contacto |
+| Llamada final | |
 | --- | --- |
-| ![Panel](docs/screenshots/painel.png) | ![Contacto](docs/screenshots/contato.png) |
+| ![Llamada final](docs/screenshots/contato.png) | |
 
 ### Otros idiomas
 
@@ -75,17 +78,17 @@ y sin etapa de build. El código es abierto y forma parte del portafolio de la e
 
 ### Celular
 
-| Inicio | Servicios | Contacto |
+| Inicio | Conversación animada | Llamada final |
 | --- | --- | --- |
-| <img src="docs/screenshots/celular-inicio.png" alt="Inicio en el celular" width="260" /> | <img src="docs/screenshots/celular-servicos.png" alt="Servicios en el celular" width="260" /> | <img src="docs/screenshots/celular-contato.png" alt="Contacto en el celular" width="260" /> |
+| <img src="docs/screenshots/celular-inicio.png" alt="Inicio en el celular" width="260" /> | <img src="docs/screenshots/celular-conversa.png" alt="Conversación en el celular" width="260" /> | <img src="docs/screenshots/celular-contato.png" alt="Llamada final en el celular" width="260" /> |
 
 ## Tecnologías
 
 | Tecnología | Para qué sirve |
 | --- | --- |
 | HTML5 | Estructura y contenido de la página |
-| CSS3 | Estilos, diseño en cuadrícula (bento), animaciones y versión para celular |
-| JavaScript | Cambio de idioma, fondo de partículas (Canvas), tarjetas de servicios, relojes y animaciones al desplazarse |
+| CSS3 | Estilos, diseño, animaciones y versión para celular |
+| JavaScript | Cambio de idioma, palabra que gira, conversación animada, fondo de partículas (Canvas) y animaciones al desplazarse |
 | SVG | Logo, íconos, banderas e ilustraciones |
 | [Google Fonts](https://fonts.google.com/) | Fuentes Schibsted Grotesk y Urbanist |
 
