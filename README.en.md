@@ -26,8 +26,8 @@
 ## About the project
 
 This repository holds the Vidal Technologies landing page, a single page built for
-campaigns and for the first contact with new clients. It presents the services, shows how
-the company works and leads visitors to get in touch via WhatsApp or e-mail.
+campaigns and for the first contact with new clients. It presents the problems it
+solves and the services, and leads visitors straight to WhatsApp or e-mail.
 
 The page is built with plain HTML, CSS and JavaScript in a single file, with no libraries
 and no build step. The code is open and is part of the company's portfolio.
@@ -35,7 +35,7 @@ and no build step. The code is open and is part of the company's portfolio.
 ### Goals
 
 - Present the company in a visual, direct way, organized in modules.
-- Show the services and an example of a dashboard the company builds.
+- Show the problems technology solves and the services, without excess text.
 - Serve clients in Brazil and abroad, with the content in three languages.
 - Lead visitors to contact with a single click.
 
@@ -43,14 +43,16 @@ and no build step. The code is open and is part of the company's portfolio.
 
 - **Three languages:** Portuguese, English and Spanish, switched with the flags in the top
   right corner. The choice is saved and can also come in the address (`?lang=en` or `?lang=es`).
-- **Hero:** title with gold highlights, animated particle background, key figures and a
-  mini automation flow.
-- **Services:** cards numbered 01 to 04 (Websites, Web applications, Process automation and
-  AI agents) that open on click and rotate on their own.
-- **About:** how we work (Conversation, Proposal and Delivery), a featured project and the "Meet Vidal" card.
-- **Dashboard:** an illustrative dashboard with animated charts and live clocks for
-  São Paulo, New York and Madrid.
-- **Contact:** WhatsApp button, with a ready-made message in the chosen language, and e-mail button.
+- **Hero:** title with a rotating word ("Technology that *serves* / *sells* / *organizes*
+  for you"), animated particle background and the WhatsApp button.
+- **Animated chat:** a phone shows an AI agent serving a customer on WhatsApp, message by message.
+- **Word strip:** the services scrolling in a loop.
+- **Problems and solutions:** three common pains that get crossed out as you scroll, followed
+  by the solution.
+- **Services:** Websites, Web applications, Automation and AI agents in short cards, with a
+  gold glow that follows the mouse.
+- **Final call and floating WhatsApp:** a gold contact block and a WhatsApp button always
+  visible in the corner, with a ready-made message in the chosen language.
 - **Responsive:** layout designed for desktop and mobile.
 - **Own visual identity:** black background, graphite tones and gold `#FBC105`,
   Schibsted Grotesk font and an SVG logo.
@@ -59,13 +61,13 @@ and no build step. The code is open and is part of the company's portfolio.
 
 ### Desktop
 
-| Services | About |
+| Problems and solutions | Services |
 | --- | --- |
-| ![Services](docs/screenshots/servicos.png) | ![About](docs/screenshots/sobre.png) |
+| ![Problems and solutions](docs/screenshots/problemas.png) | ![Services](docs/screenshots/servicos.png) |
 
-| Dashboard | Contact |
+| Final call | |
 | --- | --- |
-| ![Dashboard](docs/screenshots/painel.png) | ![Contact](docs/screenshots/contato.png) |
+| ![Final call](docs/screenshots/contato.png) | |
 
 ### Other languages
 
@@ -75,17 +77,17 @@ and no build step. The code is open and is part of the company's portfolio.
 
 ### Mobile
 
-| Hero | Services | Contact |
+| Hero | Animated chat | Final call |
 | --- | --- | --- |
-| <img src="docs/screenshots/celular-inicio.png" alt="Hero on mobile" width="260" /> | <img src="docs/screenshots/celular-servicos.png" alt="Services on mobile" width="260" /> | <img src="docs/screenshots/celular-contato.png" alt="Contact on mobile" width="260" /> |
+| <img src="docs/screenshots/celular-inicio.png" alt="Hero on mobile" width="260" /> | <img src="docs/screenshots/celular-conversa.png" alt="Chat on mobile" width="260" /> | <img src="docs/screenshots/celular-contato.png" alt="Final call on mobile" width="260" /> |
 
 ## Technologies
 
 | Technology | What it is used for |
 | --- | --- |
 | HTML5 | Page structure and content |
-| CSS3 | Styles, bento grid layout, animations and mobile version |
-| JavaScript | Language switching, particle background (Canvas), service cards, clocks and scroll animations |
+| CSS3 | Styles, layout, animations and mobile version |
+| JavaScript | Language switching, rotating word, animated chat, particle background (Canvas) and scroll animations |
 | SVG | Logo, icons, flags and illustrations |
 | [Google Fonts](https://fonts.google.com/) | Schibsted Grotesk and Urbanist fonts |
 
