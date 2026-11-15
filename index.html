@@ -56,6 +56,12 @@
   .logo span { font-weight: 300; }
   .nav { display: flex; gap: 28px; font-size: 14px; color: var(--muted); }
   .nav a:hover { color: var(--fg); }
+  .topbar-right { display: flex; align-items: center; gap: 18px; }
+  .langs { display: flex; gap: 6px; }
+  .langs button { width: 24px; height: 16px; padding: 0; border: 0; border-radius: 3px; overflow: hidden; cursor: pointer; background: none; opacity: .55; transition: opacity .2s, box-shadow .2s; }
+  .langs button:hover { opacity: 1; }
+  .langs button[aria-current="true"] { opacity: 1; box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--gold); }
+  .langs svg { display: block; width: 100%; height: 100%; }
   .btn {
     display: inline-flex; align-items: center; gap: 10px;
     border-radius: 999px; font-weight: 600; font-size: 14px;
@@ -377,7 +383,8 @@
     .side { align-items: start; }
     .t-partners { grid-column: span 2; height: auto; }
     .partners { grid-auto-flow: column; gap: 28px; }
-    .topbar .btn { padding: 10px 14px; font-size: 13px; }
+    .topbar .btn { display: none; }
+    .topbar-right { gap: 0; }
     .logo { font-size: 17px; }
     .side { grid-template-columns: 1fr; }
     .stats { gap: 22px 28px; }
@@ -429,7 +436,14 @@
     <a href="#painel">Na prática</a>
     <a href="#contato">Contato</a>
   </nav>
-  <a class="btn btn-gold" href="#contato">Fale com a gente</a>
+  <div class="topbar-right">
+    <nav class="langs" aria-label="Idioma">
+      <button type="button" data-lang="pt" title="Português" aria-label="Português"><svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#009C3B"/><path d="M15 2.5 27.5 10 15 17.5 2.5 10Z" fill="#FFDF00"/><circle cx="15" cy="10" r="4.6" fill="#002776"/><path d="M10.6 8.9c3-.5 6.3 0 8.8 1.6" stroke="#fff" stroke-width=".9" fill="none"/></svg></button>
+      <button type="button" data-lang="en" title="English" aria-label="English"><svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#B22234"/><g fill="#fff"><rect y="1.54" width="30" height="1.54"/><rect y="4.62" width="30" height="1.54"/><rect y="7.69" width="30" height="1.54"/><rect y="10.77" width="30" height="1.54"/><rect y="13.85" width="30" height="1.54"/><rect y="16.92" width="30" height="1.54"/></g><rect width="12" height="10.77" fill="#3C3B6E"/><g fill="#fff"><circle cx="2.2" cy="2" r=".7"/><circle cx="6" cy="2" r=".7"/><circle cx="9.8" cy="2" r=".7"/><circle cx="2.2" cy="5.6" r=".7"/><circle cx="6" cy="5.6" r=".7"/><circle cx="9.8" cy="5.6" r=".7"/><circle cx="2.2" cy="9.2" r=".7"/><circle cx="6" cy="9.2" r=".7"/><circle cx="9.8" cy="9.2" r=".7"/></g></svg></button>
+      <button type="button" data-lang="es" title="Español" aria-label="Español"><svg viewBox="0 0 30 20"><rect width="30" height="20" fill="#AA151B"/><rect y="5" width="30" height="10" fill="#F1BF00"/></svg></button>
+    </nav>
+    <a class="btn btn-gold" href="#contato">Fale com a gente</a>
+  </div>
 </header>
 
 <main>
@@ -690,7 +704,7 @@
     <h2 class="reveal">Tem um projeto<br><span class="gold">em mente?</span></h2>
     <p class="reveal">Conte o que você precisa e respondemos com os próximos passos.</p>
     <div class="actions reveal">
-      <a class="btn btn-gold" href="https://wa.me/5541988779179?text=Ol%C3%A1!%20Vim%20pela%20landing%20page%20da%20Vidal%20Technologies%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener"><svg><use href="#wa"/></svg>Falar no WhatsApp</a>
+      <a class="btn btn-gold" data-wa href="https://wa.me/5541988779179?text=Ol%C3%A1!%20Vim%20pela%20landing%20page%20da%20Vidal%20Technologies%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener"><svg><use href="#wa"/></svg>Falar no WhatsApp</a>
       <a class="btn btn-ghost" href="mailto:contato@vidaltechnologies.com.br"><svg><use href="#mail"/></svg>contato@vidaltechnologies.com.br</a>
     </div>
     <svg class="gem" style="width:70px;left:8%;top:22%"><use href="#gem"/></svg>
@@ -704,6 +718,175 @@
 </footer>
 
 <script>
+  // ---------- Idiomas (português, inglês e espanhol) ----------
+  // O português está escrito no próprio HTML. Para EN e ES, cada texto em português
+  // é trocado pela tradução abaixo: { "texto em português": ["inglês", "espanhol"] }.
+  const T = {
+    "Serviços": ["Services", "Servicios"],
+    "Sobre": ["About", "Nosotros"],
+    "Na prática": ["In practice", "En la práctica"],
+    "Contato": ["Contact", "Contacto"],
+    "Fale com a gente": ["Talk to us", "Hablemos"],
+    "Tecnologia sob medida": ["Tailor-made technology", "Tecnología a medida"],
+    "Nós cuidamos da tecnologia,": ["We take care of the technology,", "Nosotros cuidamos de la tecnología,"],
+    "você foca no negócio.": ["you focus on the business.", "tú te enfocas en el negocio."],
+    "Sites,": ["Websites,", "Sitios web,"],
+    "sistemas": ["systems", "sistemas"],
+    "e": ["and", "y"],
+    "agentes de IA": ["AI agents", "agentes de IA"],
+    "que trabalham por você.": ["that work for you.", "que trabajan por ti."],
+    "Veja a Vidal em ação": ["See Vidal in action", "Mira a Vidal en acción"],
+    "Conte o seu desafio e mostramos onde a tecnologia gera mais resultado.": ["Tell us your challenge and we will show you where technology delivers the most results.", "Cuéntanos tu desafío y te mostramos dónde la tecnología genera más resultados."],
+    "Agendar conversa": ["Book a call", "Agendar una charla"],
+    "Automações": ["Automations", "Automatizaciones"],
+    "rodando sem parar": ["running non-stop", "funcionando sin parar"],
+    "idiomas": ["languages", "idiomas"],
+    "atendimento e entregas": ["support and delivery", "atención y entregas"],
+    "Sob medida": ["Tailor-made", "A medida"],
+    "feito para a sua operação": ["built for your operation", "hecho para tu operación"],
+    "Agentes de IA": ["AI agents", "Agentes de IA"],
+    "// Novo serviço": ["// New service", "// Nuevo servicio"],
+    "qualificacao-de-leads": ["lead-qualification", "calificacion-de-leads"],
+    "executando": ["running", "ejecutando"],
+    "Novo lead": ["New lead", "Nuevo lead"],
+    "Analisa e qualifica": ["Analyzes and qualifies", "Analiza y califica"],
+    "Resposta personalizada": ["Personalized reply", "Respuesta personalizada"],
+    "tecnologia sob medida": ["tailor-made technology", "tecnología a medida"],
+    "Nossos serviços": ["Our services", "Nuestros servicios"],
+    "serviços": ["services", "servicios"],
+    "Soluções flexíveis para empresas que querem ganhar tempo e crescer com tecnologia.": ["Flexible solutions for companies that want to save time and grow with technology.", "Soluciones flexibles para empresas que quieren ahorrar tiempo y crecer con tecnología."],
+    "Sites": ["Websites", "Sitios web"],
+    "Sites rápidos, bonitos e fáceis de atualizar, que passam confiança para o seu cliente.": ["Fast, beautiful websites that are easy to update and earn your customers' trust.", "Sitios web rápidos, atractivos y fáciles de actualizar, que transmiten confianza a tus clientes."],
+    "Site institucional": ["Company website", "Sitio institucional"],
+    "Landing pages para campanhas": ["Campaign landing pages", "Landing pages para campañas"],
+    "Blog e portfólio": ["Blog and portfolio", "Blog y portafolio"],
+    "sites": ["websites", "sitios web"],
+    "Aplicações web": ["Web applications", "Aplicaciones web"],
+    "Sistemas sob medida que organizam o dia a dia da sua empresa.": ["Custom systems that organize your company's day-to-day work.", "Sistemas a medida que organizan el día a día de tu empresa."],
+    "Sistemas de gestão": ["Management systems", "Sistemas de gestión"],
+    "Dashboards de dados": ["Data dashboards", "Dashboards de datos"],
+    "Portal do cliente": ["Customer portal", "Portal del cliente"],
+    "aplicações": ["applications", "aplicaciones"],
+    "Automação de processos": ["Process automation", "Automatización de procesos"],
+    "Tarefas manuais e repetitivas rodando sozinhas, com workflows personalizados em n8n.": ["Manual, repetitive tasks that run on their own, with custom n8n workflows.", "Tareas manuales y repetitivas que funcionan solas, con workflows personalizados en n8n."],
+    "Relatórios automáticos": ["Automatic reports", "Informes automáticos"],
+    "Integração entre sistemas": ["System integrations", "Integración entre sistemas"],
+    "Documentos e gestão de projetos": ["Documents and project management", "Documentos y gestión de proyectos"],
+    "automação": ["automation", "automatización"],
+    "Agentes inteligentes que atendem, analisam e executam tarefas usando os dados da sua empresa.": ["Intelligent agents that serve customers, analyze and carry out tasks using your company's data.", "Agentes inteligentes que atienden, analizan y ejecutan tareas usando los datos de tu empresa."],
+    "Atendimento no WhatsApp": ["WhatsApp customer service", "Atención por WhatsApp"],
+    "Assistentes com base de conhecimento": ["Knowledge-base assistants", "Asistentes con base de conocimiento"],
+    "Análise de documentos": ["Document analysis", "Análisis de documentos"],
+    "Serviços principais": ["Core services", "Servicios principales"],
+    "Soluções flexíveis e sob medida para a sua operação": ["Flexible, tailor-made solutions for your operation", "Soluciones flexibles y a medida para tu operación"],
+    "Criamos soluções que crescem junto com a sua empresa e se adaptam ao seu jeito de trabalhar. Escolha um serviço ao lado para ver os detalhes.": ["We build solutions that grow with your company and adapt to the way you work. Pick a service to see the details.", "Creamos soluciones que crecen junto con tu empresa y se adaptan a tu forma de trabajar. Elige un servicio para ver los detalles."],
+    "Planejar, construir, automatizar e evoluir.": ["Plan, build, automate and evolve.", "Planificar, construir, automatizar y evolucionar."],
+    "Tecnologia": ["Technology", "Tecnología"],
+    "que gera resultado": ["that delivers results", "que genera resultados"],
+    "Como trabalhamos": ["How we work", "Cómo trabajamos"],
+    "Do primeiro contato à solução no ar, sem surpresas": ["From first contact to a live solution, with no surprises", "Del primer contacto a la solución en línea, sin sorpresas"],
+    "Conversa": ["Conversation", "Conversación"],
+    "Entendemos o seu negócio, o problema e o resultado que você espera.": ["We get to know your business, the problem and the result you expect.", "Entendemos tu negocio, el problema y el resultado que esperas."],
+    "Proposta": ["Proposal", "Propuesta"],
+    "Escopo, etapas, prazos e investimento claros antes de começar.": ["Clear scope, stages, deadlines and investment before we start.", "Alcance, etapas, plazos e inversión claros antes de empezar."],
+    "Entrega": ["Delivery", "Entrega"],
+    "Ciclos curtos, versões para testar e suporte depois de colocar no ar.": ["Short cycles, versions to test and support after launch.", "Ciclos cortos, versiones para probar y soporte después del lanzamiento."],
+    "Projeto em destaque": ["Featured project", "Proyecto destacado"],
+    "Agente de atendimento no WhatsApp que qualifica pedidos e registra tudo no CRM": ["WhatsApp service agent that qualifies requests and logs everything in the CRM", "Agente de atención por WhatsApp que califica pedidos y registra todo en el CRM"],
+    "Bem-vindo à": ["Welcome to", "Bienvenido a"],
+    "Sites, sistemas e IA": ["Websites, systems and AI", "Sitios web, sistemas e IA"],
+    "para empresas que querem crescer.": ["for companies that want to grow.", "para empresas que quieren crecer."],
+    "IA": ["AI", "IA"],
+    "aplicada ao seu negócio": ["applied to your business", "aplicada a tu negocio"],
+    "Agentes de IA, LLMs, soluções RAG e integração via APIs para transformar processos complexos em fluxos simples.": ["AI agents, LLMs, RAG solutions and API integrations that turn complex processes into simple flows.", "Agentes de IA, LLMs, soluciones RAG e integración vía APIs para transformar procesos complejos en flujos simples."],
+    "Conheça a Vidal": ["Meet Vidal", "Conoce a Vidal"],
+    "sobre": ["about", "nosotros"],
+    "Unimos arquitetura de software, conhecimento técnico e visão de negócio para criar soluções práticas para cada operação.": ["We combine software architecture, technical expertise and business vision to create practical solutions for each operation.", "Unimos arquitectura de software, conocimiento técnico y visión de negocio para crear soluciones prácticas para cada operación."],
+    "Seus dados,": ["Your data,", "Tus datos,"],
+    "em tempo real": ["in real time", "en tiempo real"],
+    "Painéis que mostram como a sua operação está funcionando, com automações acompanhando tudo por você.": ["Dashboards that show how your operation is running, with automations keeping track of everything for you.", "Paneles que muestran cómo funciona tu operación, con automatizaciones que siguen todo por ti."],
+    "monitorando": ["monitoring", "monitoreando"],
+    "Saúde das automações": ["Automation health", "Salud de las automatizaciones"],
+    "Situação em tempo real": ["Real-time status", "Estado en tiempo real"],
+    "Automático": ["Automatic", "Automático"],
+    "Revisão": ["Review", "Revisión"],
+    "Exceções": ["Exceptions", "Excepciones"],
+    "Nova York": ["New York", "Nueva York"],
+    "Atendimento": ["Support", "Atención"],
+    "em português": ["in Portuguese", "en portugués"],
+    "em inglês": ["in English", "en inglés"],
+    "Madri": ["Madrid", "Madrid"],
+    "em espanhol": ["in Spanish", "en español"],
+    "Automações 24 horas": ["24-hour automations", "Automatizaciones 24 horas"],
+    "Operação em três idiomas": ["Operating in three languages", "Operación en tres idiomas"],
+    "Agente de IA": ["AI agent", "Agente de IA"],
+    "99,6%": ["99.6%", "99,6%"],
+    "disponível": ["available", "disponible"],
+    "Últimos 30 dias": ["Last 30 days", "Últimos 30 días"],
+    "1.240": ["1,240", "1.240"],
+    "tarefas automatizadas": ["automated tasks", "tareas automatizadas"],
+    "Tempo economizado": ["Time saved", "Tiempo ahorrado"],
+    "Horas por semana": ["Hours per week", "Horas por semana"],
+    "Com automação": ["With automation", "Con automatización"],
+    "Antes": ["Before", "Antes"],
+    "Evolução do projeto": ["Project progress", "Evolución del proyecto"],
+    "Etapas da entrega": ["Delivery stages", "Etapas de la entrega"],
+    "Progresso": ["Progress", "Progreso"],
+    "Design": ["Design", "Diseño"],
+    "Código": ["Code", "Código"],
+    "Integrações": ["Integrations", "Integraciones"],
+    "Exemplo ilustrativo de painel que desenvolvemos. Os números variam de acordo com cada projeto.": ["Illustrative example of a dashboard we build. Numbers vary from project to project.", "Ejemplo ilustrativo de panel que desarrollamos. Los números varían según cada proyecto."],
+    "Tem um projeto": ["Have a project", "¿Tienes un proyecto"],
+    "em mente?": ["in mind?", "en mente?"],
+    "Conte o que você precisa e respondemos com os próximos passos.": ["Tell us what you need and we will reply with the next steps.", "Cuéntanos lo que necesitas y te respondemos con los próximos pasos."],
+    "Falar no WhatsApp": ["Chat on WhatsApp", "Hablar por WhatsApp"],
+    "Vidal Technologies. Todos os direitos reservados.": ["Vidal Technologies. All rights reserved.", "Vidal Technologies. Todos los derechos reservados."],
+  };
+  const META = {
+    pt: { lang: "pt-BR", title: document.title, desc: document.querySelector('meta[name="description"]').content, sections: "Seções", langs: "Idioma",
+          wa: "Olá! Vim pela landing page da Vidal Technologies e gostaria de conversar sobre um projeto." },
+    en: { lang: "en-US", title: "Vidal Technologies | Websites, systems and AI agents", desc: "Vidal Technologies builds tailor-made websites, web applications, automations and AI agents for companies.", sections: "Sections", langs: "Language",
+          wa: "Hi! I found the Vidal Technologies landing page and would like to talk about a project." },
+    es: { lang: "es-ES", title: "Vidal Technologies | Sitios web, sistemas y agentes de IA", desc: "Vidal Technologies crea sitios web, aplicaciones web, automatizaciones y agentes de IA a medida para empresas.", sections: "Secciones", langs: "Idioma",
+          wa: "¡Hola! Vi la landing page de Vidal Technologies y me gustaría hablar sobre un proyecto." },
+  };
+  const textNodes = [];
+  (function collect(root) {
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    let n;
+    while ((n = walker.nextNode())) {
+      const key = n.nodeValue.trim();
+      if (key && T[key]) textNodes.push({ n, key, pt: n.nodeValue });
+    }
+  })(document.body);
+
+  function setLang(lang) {
+    if (!META[lang]) lang = "pt";
+    const i = lang === "en" ? 0 : 1;
+    for (const t of textNodes) {
+      t.n.nodeValue = lang === "pt" ? t.pt : t.pt.replace(t.key, T[t.key][i]);
+    }
+    const m = META[lang];
+    document.documentElement.lang = m.lang;
+    document.title = m.title;
+    document.querySelector('meta[name="description"]').content = m.desc;
+    document.querySelectorAll(".dots-nav").forEach((el) => el.setAttribute("aria-label", m.sections));
+    document.querySelector(".langs").setAttribute("aria-label", m.langs);
+    const wa = document.querySelector("[data-wa]");
+    wa.href = wa.href.split("?")[0] + "?text=" + encodeURIComponent(m.wa);
+    document.querySelectorAll(".langs button").forEach((b) => b.setAttribute("aria-current", b.dataset.lang === lang ? "true" : "false"));
+    try { localStorage.setItem("vidal-lang", lang); } catch (e) {}
+    const url = new URL(location.href);
+    if (lang === "pt") url.searchParams.delete("lang"); else url.searchParams.set("lang", lang);
+    history.replaceState(null, "", url);
+  }
+  document.querySelectorAll(".langs button").forEach((b) => b.addEventListener("click", () => setLang(b.dataset.lang)));
+  // Ordem: ?lang= no endereço, depois a última escolha da pessoa, depois o idioma do navegador.
+  let saved = null;
+  try { saved = localStorage.getItem("vidal-lang"); } catch (e) {}
+  const nav = (navigator.language || "pt").slice(0, 2);
+  setLang(new URLSearchParams(location.search).get("lang") || saved || (META[nav] ? nav : "pt"));
+
   // Fundo de partículas (pontinhos que se movem devagar)
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   document.querySelectorAll("canvas.stars").forEach((c) => {
